@@ -4,8 +4,8 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>es.itg.flythings.dataspace</groupId>
-        <artifactId>java-indaga-connector-sdk</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <artifactId>indaga-connector-sdk</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
 
     <artifactId>connector</artifactId>
@@ -16,7 +16,7 @@
         <dependency>
             <groupId>es.itg.flythings.dataspace</groupId>
             <artifactId>util</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>1.0.0-SNAPSHOT</version>
         </dependency>
 
         <!-- Source: https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter -->
@@ -29,13 +29,7 @@
         <dependency>
             <groupId>es.itg.flythings.dataspace</groupId>
             <artifactId>auth</artifactId>
-            <version>1.0-SNAPSHOT</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>es.itg.flythings.dataspace</groupId>
-            <artifactId>auth</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>1.0.0-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
     </dependencies>

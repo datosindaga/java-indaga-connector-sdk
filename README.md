@@ -26,7 +26,7 @@ Include the dependency
 <dependency>
     <groupId>es.itg.flythings.dataspace</groupId>
     <artifactId>connector</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0.0-SNAPSHOT</version>
 </dependency>
 ```
 
