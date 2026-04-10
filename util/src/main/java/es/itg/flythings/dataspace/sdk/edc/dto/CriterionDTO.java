@@ -1,7 +1,6 @@
 package es.itg.flythings.dataspace.sdk.edc.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.databind.JsonNode;
 
 /**
  * Represents a single filtering condition within a {@link QuerySpecDTO}.
@@ -32,7 +31,7 @@ public class CriterionDTO {
      * The right operand of the expression — the value or constant to compare against. Accepts
      * string, numeric, or boolean values depending on the target property.
      */
-    private JsonNode operandRight;
+    private Object operandRight;
 
     /**
      * The operator applied between the left and right operands.
@@ -95,7 +94,7 @@ public class CriterionDTO {
      *
      * @return the operand right
      */
-    public JsonNode getOperandRight() {
+    public Object getOperandRight() {
         return operandRight;
     }
 
@@ -105,7 +104,7 @@ public class CriterionDTO {
      *
      * @param operandRight the operand right
      */
-    public void setOperandRight(JsonNode operandRight) {
+    public void setOperandRight(Object operandRight) {
         this.operandRight = operandRight;
     }
 
