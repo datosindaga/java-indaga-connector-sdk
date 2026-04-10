@@ -6,23 +6,14 @@ import feign.Response;
  * The type Sdk bad request exception. Indicates that the request is malformed. Corresponds with the
  * 400 http error.
  */
-public class SdkBadRequestException extends Exception {
+public class SdkBadRequestException extends SdkException {
 
-    /**
-     * Instantiates a new Sdk bad request exception.
-     *
-     * @param response the response
-     */
-    public SdkBadRequestException(Response response) {
-        super(response.reason());
+    public SdkBadRequestException(Response res) {
+        super(res);
     }
 
-    /**
-     * Instantiates a new Sdk bad request exception.
-     *
-     * @param error the error
-     */
-    public SdkBadRequestException(String error) {
-        super(error);
+    public SdkBadRequestException(String message) {
+        super(message);
     }
+
 }
