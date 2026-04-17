@@ -26,9 +26,32 @@ Include the dependency
 <dependency>
     <groupId>es.itg.flythings.dataspace</groupId>
     <artifactId>connector</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.0</version>
 </dependency>
 ```
+
+## Requirements
+
+| Tool | Version |
+|------|---------|
+| Java | 21+     |
+
+## Dependencies
+
+The SDK has a single required external dependency. Testing utilities are only needed if you are
+running the test suite.
+
+### Runtime
+
+| Artifact                                                                                | Version  | Description                        |
+|-----------------------------------------------------------------------------------------|----------|------------------------------------|
+| [`feign-jackson`](https://mvnrepository.com/artifact/io.github.openfeign/feign-jackson) | `13.9.2` | JSON serialization for HTTP client |
+
+### Test
+
+| Artifact                                                                              | Version  | Description            |
+|---------------------------------------------------------------------------------------|----------|------------------------|
+| [`junit-jupiter`](https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter) | `5.14.3` | JUnit 5 test framework |
 
 ## Authentication
 
@@ -140,7 +163,7 @@ byte[] content = downloadService.download(
 > **Note:**  You can retrieve the `agreementId` from the web interface. Navigate to **Contracts**,
 > select a contract for your desired asset, click **View Details**, and locate the **Agreement ID**
 > in
-> the Agreement section. ![agreement.png](agreement.png)
+> the Agreement section. ![agreement](.docs/agreement.png)
 
 **Full configuration** — the following shows all available parameters with their defaults:
 
