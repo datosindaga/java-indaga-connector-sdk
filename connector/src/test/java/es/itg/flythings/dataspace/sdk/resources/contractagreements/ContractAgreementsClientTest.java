@@ -2,7 +2,7 @@ package es.itg.flythings.dataspace.sdk.resources.contractagreements;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-import es.itg.flythings.dataspace.sdk.config.SdkConfig;
+import es.itg.flythings.dataspace.sdk.config.DataspaceClient;
 import es.itg.flythings.dataspace.sdk.edc.dto.QuerySpecDTO;
 import es.itg.flythings.dataspace.sdk.resources.contractagreements.clients.ContractAgreementClient;
 import es.itg.flythings.utils.TestConfig;
@@ -14,7 +14,7 @@ class ContractAgreementsClientTest {
     private final ContractAgreementClient agreementClient;
 
     public ContractAgreementsClientTest() {
-        var config = SdkConfig.builder()
+        var config = DataspaceClient.builder()
             .apiUrl(TestConfig.get("sdk.api.url"))
             .authApiUrl(TestConfig.get("sdk.auth.url"))
             .credentials(

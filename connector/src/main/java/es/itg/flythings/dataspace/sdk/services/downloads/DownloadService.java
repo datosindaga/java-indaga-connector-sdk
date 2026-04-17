@@ -1,6 +1,6 @@
 package es.itg.flythings.dataspace.sdk.services.downloads;
 
-import es.itg.flythings.dataspace.sdk.config.SdkConfig;
+import es.itg.flythings.dataspace.sdk.config.DataspaceClient;
 import es.itg.flythings.dataspace.sdk.config.SdkService;
 import es.itg.flythings.dataspace.sdk.edc.dto.DataAddressDTO;
 import es.itg.flythings.dataspace.sdk.exceptions.SdkBadRequestException;
@@ -18,7 +18,7 @@ import java.util.logging.Logger;
 /**
  * High-level service that orchestrates EDC data downloads.
  *
- * <h2>Usage with {@link SdkConfig} (recommended)</h2>
+ * <h2>Usage with {@link DataspaceClient} (recommended)</h2>
  * <pre>{@code
  * var service = new DownloadService(config);
  *
@@ -56,11 +56,11 @@ public final class DownloadService implements SdkService {
 
     /**
      * Creates a {@link DownloadService}, building all required clients from the provided
-     * {@link SdkConfig}.
+     * {@link DataspaceClient}.
      *
      * @param config the config
      */
-    public DownloadService(SdkConfig config) {
+    public DownloadService(DataspaceClient config) {
         this.contractAgreementClient = config.buildClient(ContractAgreementClient.class);
         this.transferClient = config.buildClient(TransferClient.class);
         this.edrCacheClient = config.buildClient(EDRCacheClient.class);

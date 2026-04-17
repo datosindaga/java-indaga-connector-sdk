@@ -32,7 +32,8 @@ Include the dependency
 
 ## Authentication
 
-Authentication is configured via the `SdkConfig` class, which serves as the central entry point for
+Authentication is configured via the `DataspaceClient` class, which serves as the central entry
+point for
 the SDK. It supports two authentication strategies: **static token** and **credentials-based**.
 
 > **Note:** Static tokens may expire during long-running operations. If your use case requires
@@ -44,7 +45,7 @@ the SDK. It supports two authentication strategies: **static token** and **crede
 java
 
 ```java
-SdkConfig config = SdkConfig.builder()
+DataspaceClient config = DataspaceClient.builder()
     .apiUrl("sdk.api.url")
     .authApiUrl("sdk.auth.url")
     .token("sdk.auth.token")
@@ -56,7 +57,7 @@ SdkConfig config = SdkConfig.builder()
 java
 
 ```java
-SdkConfig config = SdkConfig.builder()
+DataspaceClient config = DataspaceClient.builder()
     .apiUrl("sdk.api.url")
     .authApiUrl("sdk.auth.url")
     .credentials(
@@ -66,14 +67,16 @@ SdkConfig config = SdkConfig.builder()
     .build();
 ```
 
-When built with credentials, `SdkConfig` automatically acquires and refreshes tokens as needed,
+When built with credentials, `DataspaceClient` automatically acquires and refreshes tokens as
+needed,
 ensuring requests remain authenticated without manual intervention.
 
 ---
 
 ## Clients and Services
 
-`SdkConfig` acts as a factory for both **clients** and **services**, the two main building blocks
+`DataspaceClient` acts as a factory for both **clients** and **services**, the two main building
+blocks
 for interacting with the Flythings Connector.
 
 ### Clients

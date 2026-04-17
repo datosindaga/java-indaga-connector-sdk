@@ -14,7 +14,7 @@ import java.lang.reflect.InvocationTargetException;
  *
  * <p>Usage — static token:
  * <pre>{@code
- * SdkConfig config = SdkConfig.builder()
+ * DataspaceClient config = DataspaceClient.builder()
  *         .apiUrl("https://api.example.com")
  *         .token("eyJhbGci...")
  *         .build();
@@ -22,7 +22,7 @@ import java.lang.reflect.InvocationTargetException;
  *
  * <p>Usage — user/password:
  * <pre>{@code
- * SdkConfig config = SdkConfig.builder()
+ * DataspaceClient config = DataspaceClient.builder()
  *         .apiUrl("https://api.example.com")
  *         .authApiUrl("https://auth.example.com")
  *         .credentials("user@example.com", "s3cr3t")
@@ -34,14 +34,14 @@ import java.lang.reflect.InvocationTargetException;
  * LoginClient login = config.buildClient(LoginClient.class);
  * }*</pre>
  */
-public final class SdkConfig {
+public final class DataspaceClient {
 
     private final String apiUrl;
     private final AuthProvider authProvider;
     private final boolean debug;
     private final Level level;
 
-    private SdkConfig(String apiUrl, AuthProvider authProvider, boolean debug, Level level) {
+    private DataspaceClient(String apiUrl, AuthProvider authProvider, boolean debug, Level level) {
         this.apiUrl = apiUrl;
         this.authProvider = authProvider;
         this.debug = debug;
@@ -83,7 +83,7 @@ public final class SdkConfig {
     }
 
     /**
-     * Instantiates a service by invoking its {@code (SdkConfig)} constructor.
+     * Instantiates a service by invoking its {@code (DataspaceClient)} constructor.
      *
      * <p>Usage:
      * <pre>{@code
@@ -92,17 +92,18 @@ public final class SdkConfig {
      *
      * @param <T>          the service type
      * @param serviceClass a class that implements {@link SdkService} and has a public
-     *                     {@code (SdkConfig)} constructor
+     *                     {@code (DataspaceClient)} constructor
      * @return the instantiated service
      * @throws IllegalArgumentException if the constructor is missing or instantiation fails
      */
     public <T extends SdkService> T buildService(Class<T> serviceClass) {
         try {
-            Constructor<T> ctor = serviceClass.getConstructor(SdkConfig.class);
+            Constructor<T> ctor = serviceClass.getConstructor(DataspaceClient.class);
             return ctor.newInstance(this);
         } catch (NoSuchMethodException e) {
             throw new IllegalArgumentException(
-                serviceClass.getSimpleName() + " must have a public (SdkConfig) constructor", e
+                serviceClass.getSimpleName() + " must have a public (DataspaceClient) constructor",
+                e
             );
         } catch (InvocationTargetException e) {
             throw new IllegalArgumentException(
@@ -116,7 +117,7 @@ public final class SdkConfig {
     }
 
     /**
-     * The Builder to configure the SDKConfig.
+     * The Builder to configure the DataspaceClient.
      */
     public static final class Builder {
 
@@ -209,7 +210,7 @@ public final class SdkConfig {
          *
          * @return the sdk config
          */
-        public SdkConfig build() {
+        public DataspaceClient build() {
             requireSet(apiUrl, "apiUrl is required");
 
             boolean hasToken = isSet(token);
@@ -233,7 +234,7 @@ public final class SdkConfig {
                 ? AuthProvider.ofToken(token)
                 : AuthProvider.ofCredentials(authApiUrl, username, password);
 
-            return new SdkConfig(apiUrl, auth, debug, level);
+            return new DataspaceClient(apiUrl, auth, debug, level);
         }
     }
 }

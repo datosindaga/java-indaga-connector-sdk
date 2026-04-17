@@ -2,7 +2,7 @@ package es.itg.flythings.dataspace.sdk.resources.transfers;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-import es.itg.flythings.dataspace.sdk.config.SdkConfig;
+import es.itg.flythings.dataspace.sdk.config.DataspaceClient;
 import es.itg.flythings.dataspace.sdk.resources.transfers.client.TransferClient;
 import es.itg.flythings.utils.TestConfig;
 import org.junit.jupiter.api.Test;
@@ -12,7 +12,7 @@ public class TransferClientTests {
     private final TransferClient client;
 
     public TransferClientTests() {
-        var config = SdkConfig.builder()
+        var config = DataspaceClient.builder()
             .apiUrl(TestConfig.get("sdk.api.url"))
             .authApiUrl(TestConfig.get("sdk.auth.url"))
             .credentials(
