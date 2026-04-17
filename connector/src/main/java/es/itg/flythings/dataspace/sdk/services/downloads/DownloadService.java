@@ -49,7 +49,8 @@ import java.util.logging.Logger;
 public final class DownloadService implements SdkService {
 
     private static final Logger log = Logger.getLogger(DownloadService.class.getName());
-
+    private static final int MAX_POLL_ATTEMPTS = 10;
+    private static final long BASE_DELAY_MS = 1_000;
     private final ContractAgreementClient contractAgreementClient;
     private final TransferClient transferClient;
     private final EDRCacheClient edrCacheClient;
@@ -100,7 +101,8 @@ public final class DownloadService implements SdkService {
 
         // Step 1 — resolve negotiation
         log.fine("Fetching contract negotiation...");
-        var negotiation = contractAgreementClient.getNegotiationByAgreementId(request.agreementId);
+        var negotiation = contractAgreementClient.getNegotiationByAgreementId(
+            request.agreementId);
 
         if (negotiation == null) {
             throw new SdkBadRequestException(
@@ -120,6 +122,9 @@ public final class DownloadService implements SdkService {
         var transfer = transferClient.create(buildTransferRequest(negotiation, request));
         log.info("Transfer process created — id: " + transfer.getId()
             + ", type: " + request.transferType);
+
+        log.fine("Waiting for transfer to reach STARTED state...");
+        waitForTransferStarted(transfer.getId());
 
         // Step 3 — download
         log.fine("Downloading data via EDR cache — transferId: " + transfer.getId());
@@ -161,6 +166,42 @@ public final class DownloadService implements SdkService {
         transfer.setContractId(negotiation.getContractAgreementId());
         transfer.setCounterPartyAddress(negotiation.getCounterPartyAddress());
         return transfer;
+    }
+
+    private void waitForTransferStarted(String transferId)
+        throws SdkServerException {
+        try {
+            Thread.sleep(BASE_DELAY_MS * 5);
+            for (int attempt = 1; attempt <= MAX_POLL_ATTEMPTS; attempt++) {
+                var transfer = transferClient.getById(transferId);
+
+                switch (transfer.getState()) {
+                    case STARTED -> {
+                        log.fine("Transfer STARTED after " + attempt + " attempt(s)");
+                        return;
+                    }
+                    case TERMINATED, ERROR -> throw new SdkServerException(
+                        "Transfer " + transferId + " reached terminal state: " + transfer.getState()
+                    );
+                    default -> {
+                        if (attempt == MAX_POLL_ATTEMPTS) {
+                            throw new SdkServerException(
+                                "Transfer " + transferId + " still in state " + transfer.getState()
+                                    + " after " + MAX_POLL_ATTEMPTS + " attempts"
+                            );
+                        }
+                        long delay = BASE_DELAY_MS * (1L << (attempt - 1)); // 1s, 2s, 4s...
+                        log.fine("Transfer state is " + transfer.getState()
+                            + " (attempt " + attempt + "/" + MAX_POLL_ATTEMPTS
+                            + "), retrying in " + delay + "ms...");
+                        Thread.sleep(delay);
+                    }
+                }
+            }
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+            throw new SdkServerException("Transfer polling interrupted for: " + transferId);
+        }
     }
 
 }
