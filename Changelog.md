@@ -1,4 +1,4 @@
-# 1.0.0-SNAPSHOT (develop) (latest)
+# 1.0.0 (new) (17/04/2026)
 
 Breaking changes
 
@@ -16,5 +16,6 @@ New
 
 - Added Authentication
 - Added Client for transfers
-
-# [v1.0.0] (main) (02/03/2026)
+- Added Client for contract agreements
+- Added Client for EDR Caches
+- Added Download Service
