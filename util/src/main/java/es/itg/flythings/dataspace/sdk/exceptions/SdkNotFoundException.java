@@ -8,10 +8,20 @@ import feign.Response;
  */
 public class SdkNotFoundException extends SdkException {
 
+    /**
+     * Instantiates a new Sdk not found exception.
+     *
+     * @param res the res
+     */
     public SdkNotFoundException(Response res) {
         super(res);
     }
 
+    /**
+     * Instantiates a new Sdk not found exception.
+     *
+     * @param message the message
+     */
     public SdkNotFoundException(String message) {
         super(message);
     }

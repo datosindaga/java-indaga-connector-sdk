@@ -8,10 +8,20 @@ import feign.Response;
  */
 public class SdkBadRequestException extends SdkException {
 
+    /**
+     * Instantiates a new Sdk bad request exception.
+     *
+     * @param res the res
+     */
     public SdkBadRequestException(Response res) {
         super(res);
     }
 
+    /**
+     * Instantiates a new Sdk bad request exception.
+     *
+     * @param message the message
+     */
     public SdkBadRequestException(String message) {
         super(message);
     }

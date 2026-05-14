@@ -15,6 +15,9 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
 import java.io.IOException;
 
+/**
+ * The type Format dto.
+ */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonDeserialize(using = FormatDTO.Deserializer.class)
@@ -28,14 +31,30 @@ public final class FormatDTO {
         this.id = id;
     }
 
+    /**
+     * Of format dto.
+     *
+     * @param idValue the id value
+     * @return the format dto
+     */
     public static FormatDTO of(String idValue) {
         return new FormatDTO(idValue);
     }
 
+    /**
+     * Gets id.
+     *
+     * @return the id
+     */
     public String getId() {
         return id;
     }
 
+    /**
+     * As string.
+     *
+     * @return the string
+     */
     public String asString() {
         return id;
     }
@@ -61,8 +80,14 @@ public final class FormatDTO {
         return "FormatDTO{@id=" + id + "}";
     }
 
+    /**
+     * The Deserializer.
+     */
     public static final class Deserializer extends StdDeserializer<FormatDTO> {
 
+        /**
+         * Instantiates a new Deserializer.
+         */
         public Deserializer() {
             super(FormatDTO.class);
         }
@@ -104,6 +129,9 @@ public final class FormatDTO {
         }
     }
 
+    /**
+     * The type Serializer.
+     */
     public static final class Serializer extends JsonSerializer<FormatDTO> {
 
         @Override

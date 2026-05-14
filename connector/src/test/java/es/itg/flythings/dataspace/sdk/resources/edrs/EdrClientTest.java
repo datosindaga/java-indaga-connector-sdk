@@ -12,10 +12,16 @@ import es.itg.flythings.utils.TestConfig;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
+/**
+ * The Edr client test.
+ */
 class EdrClientTest {
 
     private final EDRCacheClient edrsClient;
 
+    /**
+     * Instantiates a new Edr client test.
+     */
     public EdrClientTest() {
         var config = DataspaceClient.builder()
             .apiUrl(TestConfig.get("sdk.api.url"))
@@ -28,6 +34,9 @@ class EdrClientTest {
         this.edrsClient = config.buildClient(EDRCacheClient.class);
     }
 
+    /**
+     * Gets requests should return assets when query is valid.
+     */
     @Test
     void getRequests_shouldReturnAssets_whenQueryIsValid() {
         var agreementId = TestConfig.get("test.agreement.id");

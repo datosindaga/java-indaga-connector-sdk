@@ -4,6 +4,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
+/**
+ * The Test config.
+ */
 public final class TestConfig {
 
     private static final Properties PROPS = load();
@@ -26,6 +29,12 @@ public final class TestConfig {
         }
     }
 
+    /**
+     * Get string.
+     *
+     * @param key the key
+     * @return the string
+     */
     public static String get(String key) {
         String value = PROPS.getProperty(key);
         if (value == null) {

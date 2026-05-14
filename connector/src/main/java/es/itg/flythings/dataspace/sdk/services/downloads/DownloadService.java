@@ -25,7 +25,7 @@ import java.util.logging.Logger;
  * DownloadResult result = service.download(
  *         new DownloadRequest.Builder("my-agreement-id").build()
  * );
- * }*</pre>
+ * }</pre>
  *
  * <h2>With custom transfer configuration</h2>
  * <pre>{@code
@@ -35,7 +35,7 @@ import java.util.logging.Logger;
  *                 .dataAddressType("AmazonS3")
  *                 .build()
  * );
- * }*</pre>
+ * }</pre>
  *
  * <h2>Usage with manual clients (testing)</h2>
  * <pre>{@code
@@ -44,7 +44,7 @@ import java.util.logging.Logger;
  *         transferClient,
  *         edrCacheClient
  * );
- * }*</pre>
+ * }</pre>
  */
 public final class DownloadService implements SdkService {
 
