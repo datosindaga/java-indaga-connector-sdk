@@ -7,10 +7,10 @@ import es.itg.flythings.dataspace.sdk.resources.policies.dto.PolicyDefinitionOut
 import es.itg.flythings.dataspace.sdk.resources.policies.dto.PolicyEvaluationPlanDTO;
 import es.itg.flythings.dataspace.sdk.resources.policies.dto.PolicyEvaluationPlanRequestDTO;
 import es.itg.flythings.dataspace.sdk.resources.policies.dto.PolicyValidationResultDTO;
+import es.itg.flythings.dataspace.sdk.dto.PaginatedResultDTO;
 import feign.Headers;
 import feign.Param;
 import feign.RequestLine;
-import java.util.List;
 
 public interface PolicyClient {
 
@@ -22,7 +22,7 @@ public interface PolicyClient {
      */
     @RequestLine("POST /v1/policydefinitions/request")
     @Headers("Content-Type: application/json")
-    List<PolicyDefinitionOutputDTO> request(QuerySpecDTO query);
+    PaginatedResultDTO<PolicyDefinitionOutputDTO> request(QuerySpecDTO query);
 
     /**
      * Returns a Policy that matches the @id given.

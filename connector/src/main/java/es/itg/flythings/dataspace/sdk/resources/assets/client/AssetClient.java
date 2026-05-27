@@ -4,10 +4,10 @@ import es.itg.flythings.dataspace.sdk.edc.dto.IdResponseDTO;
 import es.itg.flythings.dataspace.sdk.edc.dto.QuerySpecDTO;
 import es.itg.flythings.dataspace.sdk.resources.assets.dto.AssetInputDTO;
 import es.itg.flythings.dataspace.sdk.resources.assets.dto.AssetOutputDTO;
+import es.itg.flythings.dataspace.sdk.dto.PaginatedResultDTO;
 import feign.Headers;
 import feign.Param;
 import feign.RequestLine;
-import java.util.List;
 
 /**
  * The interface Asset client.
@@ -22,7 +22,7 @@ public interface AssetClient {
      */
     @RequestLine("POST /v1/assets/request")
     @Headers("Content-Type: application/json")
-    List<AssetOutputDTO> request(QuerySpecDTO query);
+    PaginatedResultDTO<AssetOutputDTO> request(QuerySpecDTO query);
 
     /**
      * Gets by id.

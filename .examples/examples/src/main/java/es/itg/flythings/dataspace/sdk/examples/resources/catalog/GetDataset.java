@@ -3,6 +3,7 @@ package es.itg.flythings.dataspace.sdk.examples.resources.catalog;
 import es.itg.flythings.dataspace.sdk.config.DataspaceClient;
 import es.itg.flythings.dataspace.sdk.resources.catalog.client.CatalogClient;
 import es.itg.flythings.dataspace.sdk.resources.catalog.dto.DatasetRequestDTO;
+import java.util.List;
 import java.util.logging.Logger;
 
 public class GetDataset {
@@ -19,6 +20,8 @@ public class GetDataset {
         var catalog = client.buildClient(CatalogClient.class);
 
         var request = new DatasetRequestDTO();
+        request.setType("DatasetRequest");
+        request.setContext(List.of("https://w3id.org/edc/connector/management/v0.0.1"));
         request.setId("asset-todo-api-1");
         request.setProtocol("dataspace-protocol-http");
         request.setCounterPartyAddress("https://provider.example.com/connector/api");

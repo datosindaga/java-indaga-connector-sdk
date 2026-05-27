@@ -3,6 +3,7 @@ package es.itg.flythings.dataspace.sdk.examples.resources.assets;
 import es.itg.flythings.dataspace.sdk.config.DataspaceClient;
 import es.itg.flythings.dataspace.sdk.edc.dto.QuerySpecDTO;
 import es.itg.flythings.dataspace.sdk.resources.assets.client.AssetClient;
+import java.util.List;
 import java.util.logging.Logger;
 
 public class RequestAssets {
@@ -20,12 +21,14 @@ public class RequestAssets {
 
         var query = new QuerySpecDTO();
         query.setType("QuerySpec");
+        query.setContext(List.of("https://w3id.org/edc/connector/management/v0.0.1"));
         query.setOffset(0);
         query.setLimit(50);
 
         var results = assets.request(query);
 
-        log.info("Found " + results.size() + " assets");
-        results.forEach(a -> log.info("  - " + a.getId()));
+        log.info("Found " + results.getItems().size() + " assets");
+        log.info("Has more: " + results.getHasMore());
+        results.getItems().forEach(a -> log.info("  - " + a.getId()));
     }
 }

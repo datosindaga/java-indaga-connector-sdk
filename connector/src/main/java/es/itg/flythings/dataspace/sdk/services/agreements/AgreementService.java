@@ -78,7 +78,7 @@ public final class AgreementService {
         criterion.setOperandRight(new ObjectMapper().valueToTree(request.assetId));
         query.setFilterExpression(List.of(criterion));
 
-        return agreementClient.request(query);
+        return agreementClient.request(query).getItems();
     }
 
 }

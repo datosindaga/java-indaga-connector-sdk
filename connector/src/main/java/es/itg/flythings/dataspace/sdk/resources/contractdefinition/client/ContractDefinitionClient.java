@@ -5,10 +5,10 @@ import es.itg.flythings.dataspace.sdk.edc.dto.QuerySpecDTO;
 import es.itg.flythings.dataspace.sdk.resources.contractdefinition.dto.ContractDefinitionInputDTO;
 import es.itg.flythings.dataspace.sdk.resources.contractdefinition.dto.ContractDefinitionOutputDTO;
 import es.itg.flythings.dataspace.sdk.resources.contractdefinition.enums.ContractState;
+import es.itg.flythings.dataspace.sdk.dto.PaginatedResultDTO;
 import feign.Headers;
 import feign.Param;
 import feign.RequestLine;
-import java.util.List;
 
 public interface ContractDefinitionClient {
 
@@ -20,7 +20,7 @@ public interface ContractDefinitionClient {
      */
     @RequestLine("POST /v1/contractdefinitions/request")
     @Headers("Content-Type: application/json")
-    List<ContractDefinitionOutputDTO> request(QuerySpecDTO query);
+    PaginatedResultDTO<ContractDefinitionOutputDTO> request(QuerySpecDTO query);
 
     /**
      * Gets a contract by id.

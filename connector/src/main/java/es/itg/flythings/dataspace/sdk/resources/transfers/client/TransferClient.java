@@ -5,10 +5,10 @@ import es.itg.flythings.dataspace.sdk.edc.dto.QuerySpecDTO;
 import es.itg.flythings.dataspace.sdk.resources.transfers.dto.SuspendTransferDTO;
 import es.itg.flythings.dataspace.sdk.resources.transfers.dto.TransferProcessDTO;
 import es.itg.flythings.dataspace.sdk.resources.transfers.dto.TransferRequestDTO;
+import es.itg.flythings.dataspace.sdk.dto.PaginatedResultDTO;
 import feign.Headers;
 import feign.Param;
 import feign.RequestLine;
-import java.util.List;
 
 /**
  * The Transfer client.
@@ -23,7 +23,7 @@ public interface TransferClient {
      */
     @RequestLine("POST /v1/transferprocess/request")
     @Headers("Content-Type: application/json")
-    List<TransferProcessDTO> request(QuerySpecDTO query);
+    PaginatedResultDTO<TransferProcessDTO> request(QuerySpecDTO query);
 
     /**
      * Gets by id.
