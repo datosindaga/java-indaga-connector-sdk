@@ -4,6 +4,7 @@ import es.itg.flythings.dataspace.sdk.config.DataspaceClient;
 import es.itg.flythings.dataspace.sdk.resources.contractnegotiation.client.ContractNegotiationClient;
 import es.itg.flythings.dataspace.sdk.resources.contractnegotiation.dto.ContractRequestDTO;
 import es.itg.flythings.dataspace.sdk.resources.contractnegotiation.dto.OfferDTO;
+import java.util.List;
 import java.util.logging.Logger;
 
 /**
@@ -28,11 +29,14 @@ public class CreateNegotiation {
         var negotiations = client.buildClient(ContractNegotiationClient.class);
 
         var offer = new OfferDTO();
+        offer.setType("Offer");
         offer.setId("offer-id:contract-def-1:provider-connector-id");
         offer.setAssigner("provider-connector-id");
         offer.setTarget("asset-todo-api-1");
 
         var request = new ContractRequestDTO();
+        request.setContext(List.of("https://w3id.org/edc/connector/management/v0.0.1"));
+        request.setType("ContractRequest");
         request.setCounterPartyAddress("https://provider.example.com/connector/api");
         request.setProtocol("dataspace-protocol-http");
         request.setPolicy(offer);

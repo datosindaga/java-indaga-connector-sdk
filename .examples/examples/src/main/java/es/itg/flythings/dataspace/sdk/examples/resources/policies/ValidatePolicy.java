@@ -27,6 +27,6 @@ public class ValidatePolicy {
 
         var result = policies.validate("policy-open-1");
 
-        log.info("Policy valid: " + result.getValid());
+        log.info("Policy valid");
     }
 }

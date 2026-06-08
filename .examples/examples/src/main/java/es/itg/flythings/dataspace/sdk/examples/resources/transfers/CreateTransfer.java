@@ -4,6 +4,7 @@ import es.itg.flythings.dataspace.sdk.config.DataspaceClient;
 import es.itg.flythings.dataspace.sdk.edc.dto.GenericDataAddressDTO;
 import es.itg.flythings.dataspace.sdk.resources.transfers.client.TransferClient;
 import es.itg.flythings.dataspace.sdk.resources.transfers.dto.TransferRequestDTO;
+import java.util.List;
 import java.util.logging.Logger;
 
 /**
@@ -31,6 +32,8 @@ public class CreateTransfer {
         destination.setType("HttpProxy");
 
         var transfer = new TransferRequestDTO();
+        transfer.setContext(List.of("https://w3id.org/edc/connector/management/v0.0.1"));
+        transfer.setType("TransferRequest");
         transfer.setCounterPartyAddress("https://provider.example.com/connector/api");
         transfer.setProtocol("dataspace-protocol-http");
         transfer.setContractId("agreement-id-1");

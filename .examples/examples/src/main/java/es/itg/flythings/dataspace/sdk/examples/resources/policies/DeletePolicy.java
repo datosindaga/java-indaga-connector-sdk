@@ -27,6 +27,6 @@ public class DeletePolicy {
 
         policies.delete("policy-open-1");
 
-        log.info("Deleted policy: policy-open-1");
+        log.info("Deleted policy");
     }
 }

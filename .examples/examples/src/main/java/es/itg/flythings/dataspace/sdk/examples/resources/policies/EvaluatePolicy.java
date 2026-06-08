@@ -27,10 +27,12 @@ public class EvaluatePolicy {
         var policies = client.buildClient(PolicyClient.class);
 
         var request = new PolicyEvaluationPlanRequestDTO();
+        request.setContext(List.of("https://w3id.org/edc/connector/management/v0.0.1"));
+        request.setType("PolicyEvaluationPlanRequest");
         request.setPolicyScope("catalog");
 
         var plan = policies.evaluate("policy-open-1", request);
 
-        log.info("Evaluation plan for policy-open-1: " + plan);
+        log.info("Evaluation plan: " + plan);
     }
 }

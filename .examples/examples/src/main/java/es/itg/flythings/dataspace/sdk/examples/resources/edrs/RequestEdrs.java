@@ -3,6 +3,7 @@ package es.itg.flythings.dataspace.sdk.examples.resources.edrs;
 import es.itg.flythings.dataspace.sdk.config.DataspaceClient;
 import es.itg.flythings.dataspace.sdk.edc.dto.QuerySpecDTO;
 import es.itg.flythings.dataspace.sdk.resources.edrs.client.EDRCacheClient;
+import java.util.List;
 import java.util.logging.Logger;
 
 /**
@@ -28,6 +29,7 @@ public class RequestEdrs {
 
         var query = new QuerySpecDTO();
         query.setType("QuerySpec");
+        query.setContext(List.of("https://w3id.org/edc/connector/management/v0.0.1"));
         query.setOffset(0);
         query.setLimit(50);
 

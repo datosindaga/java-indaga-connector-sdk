@@ -69,7 +69,6 @@ public interface ContractNegotiationClient {
      * @param id the contract id
      */
     @RequestLine("POST /v1/contractnegotiations/{id}/terminate")
-    @Headers("Content-Type: application/json")
     void terminate(@Param("id") String id);
 
     /**
@@ -78,7 +77,6 @@ public interface ContractNegotiationClient {
      * @param id the contract id
      */
     @RequestLine("POST /v1/contractnegotiations/{id}/hide")
-    @Headers("Content-Type: application/json")
     void hide(@Param("id") String id);
 
     /**

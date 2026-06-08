@@ -29,11 +29,21 @@ public class CreatePolicy {
         var policies = client.buildClient(PolicyClient.class);
 
         var policy = new PolicyDefinitionInputDTO();
-        policy.setId("policy-open-1");
+        policy.setContext(List.of("https://w3id.org/edc/connector/management/v0.0.1"));
+        policy.setType("PolicyDefinition");
+        policy.setPrivateProperties(Map.of(
+            "id", "require-membership",
+            "title", "Require Membership"
+        ));
         policy.setPolicy(Map.of(
             "@type", "Set",
             "permission", List.of(Map.of(
-                "action", "use"
+                "action", "use",
+                "constraint", Map.of(
+                    "leftOperand", "MembershipCredential",
+                    "operator", "eq",
+                    "rightOperand", "active"
+                )
             ))
         ));
 

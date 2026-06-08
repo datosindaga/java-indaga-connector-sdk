@@ -3,6 +3,7 @@ package es.itg.flythings.dataspace.sdk.examples.resources.negotiations;
 import es.itg.flythings.dataspace.sdk.config.DataspaceClient;
 import es.itg.flythings.dataspace.sdk.edc.dto.QuerySpecDTO;
 import es.itg.flythings.dataspace.sdk.resources.contractnegotiation.client.ContractNegotiationClient;
+import java.util.List;
 import java.util.logging.Logger;
 
 /**
@@ -28,6 +29,7 @@ public class RequestNegotiations {
 
         var query = new QuerySpecDTO();
         query.setType("QuerySpec");
+        query.setContext(List.of("https://w3id.org/edc/connector/management/v0.0.1"));
         query.setOffset(0);
         query.setLimit(50);
 

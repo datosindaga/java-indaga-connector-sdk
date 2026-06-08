@@ -27,6 +27,6 @@ public class GetEdrAddress {
 
         var address = edrs.getAddress("transfer-process-id-1");
 
-        log.info("EDR address endpoint: " + address.getEndpoint());
+        log.info("EDR address endpoint: " + address.getJsonLdType());
     }
 }

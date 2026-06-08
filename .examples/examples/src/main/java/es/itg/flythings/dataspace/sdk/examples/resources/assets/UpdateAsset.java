@@ -4,6 +4,7 @@ import es.itg.flythings.dataspace.sdk.config.DataspaceClient;
 import es.itg.flythings.dataspace.sdk.edc.dto.HttpDataAddressDTO;
 import es.itg.flythings.dataspace.sdk.resources.assets.client.AssetClient;
 import es.itg.flythings.dataspace.sdk.resources.assets.dto.AssetInputDTO;
+import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
 
@@ -29,16 +30,27 @@ public class UpdateAsset {
         var assets = client.buildClient(AssetClient.class);
 
         var dataAddress = new HttpDataAddressDTO();
+        dataAddress.setJsonLdType("DataAddress");
         dataAddress.setType("HttpData");
         dataAddress.setBaseUrl("https://jsonplaceholder.typicode.com/todos");
-        dataAddress.setProxyPath(true);
 
         var asset = new AssetInputDTO();
         asset.setId("asset-todo-api-1");
+        asset.setContext(List.of("https://w3id.org/edc/connector/management/v0.0.1"));
+        asset.setType("Asset");
+        asset.setId("99c6ae8e-32ee-4e11-804c-c4d64c36037f");
         asset.setProperties(Map.of(
-            "name", "Todo API v2",
-            "contentType", "application/json",
-            "version", "2.0"
+            "title", "Updated Test TODO",
+            "description", "Simple Updated ToDo Json sample for testing with a simple asset",
+            "keywords", List.of("Test", "TODOs"),
+            "offerType", "Available",
+            "publicTitle", "Test TODO",
+            "publicDescription", "Simple ToDo Json sample for testing with a simple asset",
+            "theme", "Testing",
+            "optOut", false
+        ));
+        asset.setPrivateProperties(Map.of(
+            "authentication", "REST-API Endpoint"
         ));
         asset.setDataAddress(dataAddress);
 

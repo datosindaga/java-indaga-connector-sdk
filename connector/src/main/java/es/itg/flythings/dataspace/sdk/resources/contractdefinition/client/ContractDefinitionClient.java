@@ -60,6 +60,7 @@ public interface ContractDefinitionClient {
      * @param targetState the target state
      */
     @RequestLine("PUT /v1/contractdefinitions/state/{id}")
+    @Headers("Content-Type: text/plain")
     void changeState(@Param("id") String id, ContractState targetState);
 
     /**

@@ -81,7 +81,6 @@ public interface PolicyClient {
      * @return the validation result
      */
     @RequestLine("POST /v1/policydefinitions/{id}/validate")
-    @Headers("Content-Type: application/json")
     PolicyValidationResultDTO validate(@Param("id") String id);
 
 
