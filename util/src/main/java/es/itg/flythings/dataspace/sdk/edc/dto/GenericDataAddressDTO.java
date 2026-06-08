@@ -7,7 +7,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.HashMap;
 import java.util.Map;
 
-/** Fallback data address for any unrecognized {@code type} value. */
+/**
+ * Fallback data address for any unrecognized {@code type} value.
+ */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class GenericDataAddressDTO implements DataAddressDTO {
 
@@ -19,19 +21,38 @@ public class GenericDataAddressDTO implements DataAddressDTO {
 
     private Map<String, Object> additional = new HashMap<>();
 
+    /**
+     * Instantiates a new Generic data address dto.
+     */
     public GenericDataAddressDTO() {
     }
 
+    /**
+     * Put additional.
+     *
+     * @param key   the key
+     * @param value the value
+     */
     @JsonAnySetter
     public void putAdditional(String key, Object value) {
         additional.put(key, value);
     }
 
+    /**
+     * Gets additional.
+     *
+     * @return the additional
+     */
     @JsonAnyGetter
     public Map<String, Object> getAdditional() {
         return additional;
     }
 
+    /**
+     * Sets additional.
+     *
+     * @param additional the additional
+     */
     public void setAdditional(Map<String, Object> additional) {
         this.additional = additional;
     }
@@ -41,6 +62,11 @@ public class GenericDataAddressDTO implements DataAddressDTO {
         return jsonLdType;
     }
 
+    /**
+     * Sets json ld type.
+     *
+     * @param jsonLdType the json ld type
+     */
     public void setJsonLdType(String jsonLdType) {
         this.jsonLdType = jsonLdType;
     }
@@ -50,6 +76,11 @@ public class GenericDataAddressDTO implements DataAddressDTO {
         return type;
     }
 
+    /**
+     * Sets type.
+     *
+     * @param type the type
+     */
     public void setType(String type) {
         this.type = type;
     }

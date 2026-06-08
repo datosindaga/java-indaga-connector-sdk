@@ -200,26 +200,56 @@ public class CatalogDTO {
         this.participantId = participantId;
     }
 
+    /**
+     * Gets asset id.
+     *
+     * @return the asset id
+     */
     public String getAssetId() {
         return assetId;
     }
 
+    /**
+     * Sets asset id.
+     *
+     * @param assetId the asset id
+     */
     public void setAssetId(String assetId) {
         this.assetId = assetId;
     }
 
+    /**
+     * Gets description.
+     *
+     * @return the description
+     */
     public String getDescription() {
         return description;
     }
 
+    /**
+     * Sets description.
+     *
+     * @param description the description
+     */
     public void setDescription(String description) {
         this.description = description;
     }
 
+    /**
+     * Gets is catalog.
+     *
+     * @return the is catalog
+     */
     public String getIsCatalog() {
         return isCatalog;
     }
 
+    /**
+     * Sets is catalog.
+     *
+     * @param isCatalog the is catalog
+     */
     public void setIsCatalog(String isCatalog) {
         this.isCatalog = isCatalog;
     }

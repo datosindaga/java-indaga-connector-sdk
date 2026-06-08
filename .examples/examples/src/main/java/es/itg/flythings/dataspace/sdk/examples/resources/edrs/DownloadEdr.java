@@ -5,10 +5,19 @@ import es.itg.flythings.dataspace.sdk.resources.edrs.client.EDRCacheClient;
 import java.io.IOException;
 import java.util.logging.Logger;
 
+/**
+ * The type Download edr.
+ */
 public class DownloadEdr {
 
     private static final Logger log = Logger.getLogger(DownloadEdr.class.getName());
 
+    /**
+     * The entry point of application.
+     *
+     * @param args the input arguments
+     * @throws IOException the io exception
+     */
     public static void main(String[] args) throws IOException {
         var client = DataspaceClient.builder()
             .apiUrl("https://devdsconnector.flythings.io/connector/api")
@@ -19,7 +28,7 @@ public class DownloadEdr {
         var edrs = client.buildClient(EDRCacheClient.class);
 
         try (var response = edrs.download("transfer-process-id-1");
-             var stream = response.body().asInputStream()) {
+            var stream = response.body().asInputStream()) {
 
             byte[] content = stream.readAllBytes();
             log.info("Downloaded " + content.length + " bytes via EDR transfer-process-id-1");

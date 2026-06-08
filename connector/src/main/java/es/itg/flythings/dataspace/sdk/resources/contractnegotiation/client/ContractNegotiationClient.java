@@ -11,6 +11,9 @@ import feign.Param;
 import feign.RequestLine;
 import java.util.List;
 
+/**
+ * The interface Contract negotiation client.
+ */
 public interface ContractNegotiationClient {
 
     /**

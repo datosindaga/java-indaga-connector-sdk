@@ -5,10 +5,18 @@ import es.itg.flythings.dataspace.sdk.resources.contractdefinition.client.Contra
 import es.itg.flythings.dataspace.sdk.resources.contractdefinition.enums.ContractState;
 import java.util.logging.Logger;
 
+/**
+ * The type Change state contract.
+ */
 public class ChangeStateContract {
 
     private static final Logger log = Logger.getLogger(ChangeStateContract.class.getName());
 
+    /**
+     * The entry point of application.
+     *
+     * @param args the input arguments
+     */
     public static void main(String[] args) {
         var client = DataspaceClient.builder()
             .apiUrl("https://devdsconnector.flythings.io/connector/api")

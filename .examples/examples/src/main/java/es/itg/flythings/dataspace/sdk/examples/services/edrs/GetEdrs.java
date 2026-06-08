@@ -6,10 +6,18 @@ import es.itg.flythings.dataspace.sdk.services.edrs.EdrRequest;
 import es.itg.flythings.dataspace.sdk.services.edrs.EdrService;
 import java.util.logging.Logger;
 
+/**
+ * The type Get edrs.
+ */
 public class GetEdrs {
 
     private static final Logger log = Logger.getLogger(GetEdrs.class.getName());
 
+    /**
+     * The entry point of application.
+     *
+     * @param args the input arguments
+     */
     public static void main(String[] args) {
         var client = DataspaceClient.builder()
             .apiUrl("https://devdsconnector.flythings.io/connector/api")

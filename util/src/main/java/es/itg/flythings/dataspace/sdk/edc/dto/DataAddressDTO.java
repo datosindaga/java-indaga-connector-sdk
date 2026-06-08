@@ -21,9 +21,13 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 })
 public interface DataAddressDTO {
 
-    /** Concrete address mechanism, e.g. {@code "HttpData"}, {@code "AmazonS3"}. */
+    /**
+     * Concrete address mechanism, e.g. {@code "HttpData"}, {@code "AmazonS3"}.  @return  the type
+     */
     String getType();
 
-    /** JSON-LD class name, typically {@code "DataAddress"}. */
+    /**
+     * JSON-LD class name, typically {@code "DataAddress"}.  @return  the json ld type
+     */
     String getJsonLdType();
 }

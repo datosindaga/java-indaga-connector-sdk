@@ -52,6 +52,12 @@ public class DetailedDatasetDTO {
     public DetailedDatasetDTO() {
     }
 
+    /**
+     * Instantiates a new Detailed dataset dto.
+     *
+     * @param dataset the dataset
+     * @param catalog the catalog
+     */
     public DetailedDatasetDTO(DatasetDTO dataset, CatalogDTO catalog) {
         this.context = catalog.getContext();
         this.type = dataset.getType();
@@ -153,16 +159,28 @@ public class DetailedDatasetDTO {
         this.type = type;
     }
 
+    /**
+     * Gets provider.
+     *
+     * @return the provider
+     */
     public String getProvider() {
         return provider;
     }
 
+    /**
+     * Sets provider.
+     *
+     * @param provider the provider
+     */
     public void setProvider(String provider) {
         this.provider = provider;
     }
 
     /**
      * Always write our public properties under "properties" (not flattened).
+     *
+     * @return the properties
      */
     @JsonProperty("properties")
     public Map<String, Object> getProperties() {
@@ -171,6 +189,8 @@ public class DetailedDatasetDTO {
 
     /**
      * Accept nested "properties" if the provider sends them that way.
+     *
+     * @param props the props
      */
     @JsonProperty("properties")
     public void setProperties(Map<String, Object> props) {
@@ -181,6 +201,9 @@ public class DetailedDatasetDTO {
 
     /**
      * Capture any unknown top-level key (i.e., flattened public property) on deserialize.
+     *
+     * @param key   the key
+     * @param value the value
      */
     @JsonAnySetter
     public void captureFlattened(String key, Object value) {

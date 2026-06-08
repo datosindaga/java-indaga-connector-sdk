@@ -5,10 +5,18 @@ import es.itg.flythings.dataspace.sdk.resources.catalog.client.CatalogClient;
 import es.itg.flythings.dataspace.sdk.resources.catalog.dto.ContactRequestDTO;
 import java.util.logging.Logger;
 
+/**
+ * The type Get contact catalogs.
+ */
 public class GetContactCatalogs {
 
     private static final Logger log = Logger.getLogger(GetContactCatalogs.class.getName());
 
+    /**
+     * The entry point of application.
+     *
+     * @param args the input arguments
+     */
     public static void main(String[] args) {
         var client = DataspaceClient.builder()
             .apiUrl("https://devdsconnector.flythings.io/connector/api")

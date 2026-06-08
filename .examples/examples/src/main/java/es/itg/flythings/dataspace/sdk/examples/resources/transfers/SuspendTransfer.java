@@ -5,10 +5,18 @@ import es.itg.flythings.dataspace.sdk.resources.transfers.client.TransferClient;
 import es.itg.flythings.dataspace.sdk.resources.transfers.dto.SuspendTransferDTO;
 import java.util.logging.Logger;
 
+/**
+ * The type Suspend transfer.
+ */
 public class SuspendTransfer {
 
     private static final Logger log = Logger.getLogger(SuspendTransfer.class.getName());
 
+    /**
+     * The entry point of application.
+     *
+     * @param args the input arguments
+     */
     public static void main(String[] args) {
         var client = DataspaceClient.builder()
             .apiUrl("https://devdsconnector.flythings.io/connector/api")

@@ -12,6 +12,9 @@ import feign.Headers;
 import feign.Param;
 import feign.RequestLine;
 
+/**
+ * The interface Policy client.
+ */
 public interface PolicyClient {
 
     /**
@@ -63,6 +66,7 @@ public interface PolicyClient {
     /**
      * Evaluates a Policy.
      *
+     * @param id    the id
      * @param input the policy evaluation plan
      * @return the evaluation
      */

@@ -7,10 +7,18 @@ import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
 
+/**
+ * The type Create policy.
+ */
 public class CreatePolicy {
 
     private static final Logger log = Logger.getLogger(CreatePolicy.class.getName());
 
+    /**
+     * The entry point of application.
+     *
+     * @param args the input arguments
+     */
     public static void main(String[] args) {
         var client = DataspaceClient.builder()
             .apiUrl("https://devdsconnector.flythings.io/connector/api")

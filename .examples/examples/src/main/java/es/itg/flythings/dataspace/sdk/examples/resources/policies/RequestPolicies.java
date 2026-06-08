@@ -6,10 +6,18 @@ import es.itg.flythings.dataspace.sdk.resources.policies.client.PolicyClient;
 import java.util.List;
 import java.util.logging.Logger;
 
+/**
+ * The type Request policies.
+ */
 public class RequestPolicies {
 
     private static final Logger log = Logger.getLogger(RequestPolicies.class.getName());
 
+    /**
+     * The entry point of application.
+     *
+     * @param args the input arguments
+     */
     public static void main(String[] args) {
         var client = DataspaceClient.builder()
             .apiUrl("https://devdsconnector.flythings.io/connector/api")

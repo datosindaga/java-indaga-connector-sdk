@@ -193,10 +193,20 @@ public class ContractDefinitionOutputDTO {
         this.createdAt = createdAt;
     }
 
+    /**
+     * Gets state.
+     *
+     * @return the state
+     */
     public ContractState getState() {
         return state;
     }
 
+    /**
+     * Sets state.
+     *
+     * @param state the state
+     */
     public void setState(ContractState state) {
         this.state = state;
     }

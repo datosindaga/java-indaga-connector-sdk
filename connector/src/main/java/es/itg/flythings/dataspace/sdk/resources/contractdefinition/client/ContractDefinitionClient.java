@@ -10,6 +10,9 @@ import feign.Headers;
 import feign.Param;
 import feign.RequestLine;
 
+/**
+ * The interface Contract definition client.
+ */
 public interface ContractDefinitionClient {
 
     /**
@@ -53,7 +56,8 @@ public interface ContractDefinitionClient {
     /**
      * Change contract definition state.
      *
-     * @param id the id
+     * @param id          the id
+     * @param targetState the target state
      */
     @RequestLine("PUT /v1/contractdefinitions/state/{id}")
     void changeState(@Param("id") String id, ContractState targetState);

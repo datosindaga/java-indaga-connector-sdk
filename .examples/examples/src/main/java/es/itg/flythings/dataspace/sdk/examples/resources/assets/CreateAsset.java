@@ -7,10 +7,18 @@ import es.itg.flythings.dataspace.sdk.resources.assets.dto.AssetInputDTO;
 import java.util.Map;
 import java.util.logging.Logger;
 
+/**
+ * The type Create asset.
+ */
 public class CreateAsset {
 
     private static final Logger log = Logger.getLogger(CreateAsset.class.getName());
 
+    /**
+     * The entry point of application.
+     *
+     * @param args the input arguments
+     */
     public static void main(String[] args) {
         var client = DataspaceClient.builder()
             .apiUrl("https://devdsconnector.flythings.io/connector/api")

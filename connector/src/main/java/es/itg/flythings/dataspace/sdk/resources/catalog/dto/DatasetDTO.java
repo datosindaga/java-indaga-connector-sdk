@@ -143,6 +143,8 @@ public class DatasetDTO {
 
     /**
      * Always write our public properties under "properties" (not flattened).
+     *
+     * @return the properties
      */
     @JsonProperty("properties")
     public Map<String, Object> getProperties() {
@@ -151,6 +153,8 @@ public class DatasetDTO {
 
     /**
      * Accept nested "properties" if the provider sends them that way.
+     *
+     * @param props the props
      */
     @JsonProperty("properties")
     public void setProperties(Map<String, Object> props) {
@@ -161,6 +165,9 @@ public class DatasetDTO {
 
     /**
      * Capture any unknown top-level key (i.e., flattened public property) on deserialize.
+     *
+     * @param key   the key
+     * @param value the value
      */
     @JsonAnySetter
     public void captureFlattened(String key, Object value) {

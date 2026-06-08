@@ -12,21 +12,44 @@ public class ContactRequestDTO {
 
     private String search;
 
+    /**
+     * Instantiates a new Contact request dto.
+     */
     public ContactRequestDTO() {
     }
 
+    /**
+     * Gets id.
+     *
+     * @return the id
+     */
     public UUID getId() {
         return id;
     }
 
+    /**
+     * Sets id.
+     *
+     * @param id the id
+     */
     public void setId(UUID id) {
         this.id = id;
     }
 
+    /**
+     * Gets search.
+     *
+     * @return the search
+     */
     public String getSearch() {
         return search;
     }
 
+    /**
+     * Sets search.
+     *
+     * @param search the search
+     */
     public void setSearch(String search) {
         this.search = search;
     }

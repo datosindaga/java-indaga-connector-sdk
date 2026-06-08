@@ -6,10 +6,18 @@ import es.itg.flythings.dataspace.sdk.resources.contractnegotiation.dto.Contract
 import es.itg.flythings.dataspace.sdk.resources.contractnegotiation.dto.OfferDTO;
 import java.util.logging.Logger;
 
+/**
+ * The type Create negotiation.
+ */
 public class CreateNegotiation {
 
     private static final Logger log = Logger.getLogger(CreateNegotiation.class.getName());
 
+    /**
+     * The entry point of application.
+     *
+     * @param args the input arguments
+     */
     public static void main(String[] args) {
         var client = DataspaceClient.builder()
             .apiUrl("https://devdsconnector.flythings.io/connector/api")

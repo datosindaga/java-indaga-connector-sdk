@@ -14,6 +14,9 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import java.io.IOException;
 
+/**
+ * The type Term ref.
+ */
 @JsonDeserialize(using = TermRef.Deserializer.class)
 @JsonSerialize(using = TermRef.Serializer.class)
 public final class TermRef {
@@ -25,14 +28,28 @@ public final class TermRef {
         this.id = id;
     }
 
+    /**
+     * Of term ref.
+     *
+     * @param id the id
+     * @return the term ref
+     */
     public static TermRef of(String id) {
         return new TermRef(id);
     }
 
+    /**
+     * Gets id.
+     *
+     * @return the id
+     */
     public String getId() {
         return id;
     }
 
+    /**
+     * The type Deserializer.
+     */
     public static final class Deserializer extends JsonDeserializer<TermRef> {
 
         @Override
@@ -58,6 +75,9 @@ public final class TermRef {
         }
     }
 
+    /**
+     * The type Serializer.
+     */
     public static final class Serializer extends JsonSerializer<TermRef> {
 
         @Override

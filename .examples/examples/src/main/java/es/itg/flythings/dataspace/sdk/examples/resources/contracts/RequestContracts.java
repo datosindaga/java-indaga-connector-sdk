@@ -6,10 +6,18 @@ import es.itg.flythings.dataspace.sdk.resources.contractdefinition.client.Contra
 import java.util.List;
 import java.util.logging.Logger;
 
+/**
+ * The type Request contracts.
+ */
 public class RequestContracts {
 
     private static final Logger log = Logger.getLogger(RequestContracts.class.getName());
 
+    /**
+     * The entry point of application.
+     *
+     * @param args the input arguments
+     */
     public static void main(String[] args) {
         var client = DataspaceClient.builder()
             .apiUrl("https://devdsconnector.flythings.io/connector/api")

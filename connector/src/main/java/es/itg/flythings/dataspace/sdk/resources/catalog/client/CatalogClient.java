@@ -10,6 +10,9 @@ import feign.Headers;
 import feign.RequestLine;
 import java.util.List;
 
+/**
+ * The interface Catalog client.
+ */
 public interface CatalogClient {
 
     /**
