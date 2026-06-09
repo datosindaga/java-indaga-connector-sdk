@@ -6,10 +6,6 @@ package es.itg.flythings.dataspace.sdk.resources.transfers.enums;
 public enum TransferStateEnum {
 
     /**
-     * Initial transfer state enum.
-     */
-    INITIAL,
-    /**
      * Requested transfer state enum.
      */
     REQUESTED,

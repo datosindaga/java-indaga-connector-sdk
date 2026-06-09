@@ -13,7 +13,7 @@ import java.util.List;
  *         .transferType("HttpData-PUSH")
  *         .dataAddressType("AmazonS3")
  *         .build();
- * }*</pre>
+ * }</pre>
  */
 public final class DownloadRequest {
 

@@ -11,7 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * <p>For example:</p>
  * <pre>{@code
  * { "operandLeft": "properties.contentType", "operator": "=", "operandRight": "application/json" }
- * }*</pre>
+ * }</pre>
  */
 public class CriterionDTO {
 

@@ -8,10 +8,20 @@ import feign.Response;
  */
 public class SdkUnauthorizedException extends SdkException {
 
+    /**
+     * Instantiates a new Sdk unauthorized exception.
+     *
+     * @param res the res
+     */
     public SdkUnauthorizedException(Response res) {
         super(res);
     }
 
+    /**
+     * Instantiates a new Sdk unauthorized exception.
+     *
+     * @param message the message
+     */
     public SdkUnauthorizedException(String message) {
         super(message);
     }

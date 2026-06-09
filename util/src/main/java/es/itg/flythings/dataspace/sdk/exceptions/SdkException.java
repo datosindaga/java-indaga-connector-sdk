@@ -4,17 +4,30 @@ import feign.Response;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
+/**
+ * The type Sdk exception.
+ */
 public abstract class SdkException extends Exception {
 
     private final int statusCode;
     private final String responseBody;
 
+    /**
+     * Instantiates a new Sdk exception.
+     *
+     * @param message the message
+     */
     protected SdkException(String message) {
         super(message);
         this.statusCode = -1;
         this.responseBody = null;
     }
 
+    /**
+     * Instantiates a new Sdk exception.
+     *
+     * @param res the res
+     */
     protected SdkException(Response res) {
         super(buildMessage(res));
         this.statusCode = res.status();
@@ -38,10 +51,20 @@ public abstract class SdkException extends Exception {
         }
     }
 
+    /**
+     * Gets status code.
+     *
+     * @return the status code
+     */
     public int getStatusCode() {
         return statusCode;
     }
 
+    /**
+     * Gets response body.
+     *
+     * @return the response body
+     */
     public String getResponseBody() {
         return responseBody;
     }
