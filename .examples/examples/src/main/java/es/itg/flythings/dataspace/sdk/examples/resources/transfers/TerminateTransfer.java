@@ -2,6 +2,8 @@ package es.itg.flythings.dataspace.sdk.examples.resources.transfers;
 
 import es.itg.flythings.dataspace.sdk.config.DataspaceClient;
 import es.itg.flythings.dataspace.sdk.resources.transfers.client.TransferClient;
+import es.itg.flythings.dataspace.sdk.resources.transfers.dto.TerminateTransferDTO;
+import java.util.List;
 import java.util.logging.Logger;
 
 /**
@@ -25,7 +27,12 @@ public class TerminateTransfer {
 
         var transfers = client.buildClient(TransferClient.class);
 
-        transfers.terminate("transfer-process-id-1");
+        var terminate = new TerminateTransferDTO();
+        terminate.setContext(List.of("https://w3id.org/edc/connector/management/v0.0.1"));
+        terminate.setType("TerminateTransfer");
+        terminate.setReason("Transfer terminated by consumer request.");
+
+        transfers.terminate("transfer-process-id-1", terminate);
 
         log.info("Terminated transfer: transfer-process-id-1");
     }

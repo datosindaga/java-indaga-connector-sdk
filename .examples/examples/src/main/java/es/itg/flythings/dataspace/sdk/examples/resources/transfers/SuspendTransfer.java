@@ -27,6 +27,8 @@ public class SuspendTransfer {
         var transfers = client.buildClient(TransferClient.class);
 
         var suspend = new SuspendTransferDTO();
+        suspend.setContext(List.of("https://w3id.org/edc/connector/management/v0.0.1"));
+        suspend.setType("SuspendTransfer");
         suspend.setReason("Maintenance window");
 
         transfers.suspend("transfer-process-id-1", suspend);

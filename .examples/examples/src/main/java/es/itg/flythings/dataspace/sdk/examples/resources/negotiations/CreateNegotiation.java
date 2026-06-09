@@ -5,6 +5,7 @@ import es.itg.flythings.dataspace.sdk.resources.contractnegotiation.client.Contr
 import es.itg.flythings.dataspace.sdk.resources.contractnegotiation.dto.ContractRequestDTO;
 import es.itg.flythings.dataspace.sdk.resources.contractnegotiation.dto.OfferDTO;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Logger;
 
 /**

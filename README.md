@@ -859,6 +859,8 @@ Temporarily pause an active transfer:
 
 ```java
 var suspend = new SuspendTransferDTO();
+suspend.setContext(List.of("https://w3id.org/edc/connector/management/v0.0.1"));
+suspend.setType("SuspendTransfer");
 suspend.setReason("Maintenance window");
 
 transfers.suspend("my-transfer-id", suspend);
@@ -877,7 +879,12 @@ Returns `void`.
 #### Terminate
 
 ```java
-transfers.terminate("my-transfer-id");
+var terminate = new TerminateTransferDTO();
+terminate.setContext(List.of("https://w3id.org/edc/connector/management/v0.0.1"));
+terminate.setType("TerminateTransfer");
+terminate.setReason("Transfer terminated by consumer request.");
+
+transfers.terminate("my-transfer-id", terminate);
 ```
 
 Returns `void`.

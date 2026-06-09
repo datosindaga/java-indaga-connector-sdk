@@ -3,6 +3,7 @@ package es.itg.flythings.dataspace.sdk.resources.transfers.client;
 import es.itg.flythings.dataspace.sdk.edc.dto.IdResponseDTO;
 import es.itg.flythings.dataspace.sdk.edc.dto.QuerySpecDTO;
 import es.itg.flythings.dataspace.sdk.resources.transfers.dto.SuspendTransferDTO;
+import es.itg.flythings.dataspace.sdk.resources.transfers.dto.TerminateTransferDTO;
 import es.itg.flythings.dataspace.sdk.resources.transfers.dto.TransferProcessDTO;
 import es.itg.flythings.dataspace.sdk.resources.transfers.dto.TransferRequestDTO;
 import es.itg.flythings.dataspace.sdk.dto.PaginatedResultDTO;
@@ -65,10 +66,12 @@ public interface TransferClient {
     /**
      * Terminate a transfer by its id.
      *
-     * @param id the id
+     * @param id               the id
+     * @param terminateTransfer the terminate transfer
      */
     @RequestLine("POST /v1/transferprocess/{id}/terminate")
-    void terminate(@Param("id") String id);
+    @Headers("Content-Type: application/json")
+    void terminate(@Param("id") String id, TerminateTransferDTO terminateTransfer);
 
     /**
      * Deprovision a transfer by its id.
