@@ -1,18 +1,26 @@
-# 1.0.0 (new) (17/04/2026)
+## [1.1.0](https://github.com/datosindaga/java-indaga-connector-sdk/releases/tag/v1.1.0) (09/06/2026)
 
-Breaking changes
+#### New
 
-- None
+- Added `AssetClient` (create, get, update, delete, request)
+- Added `CatalogClient` (get catalog, get dataset, get contact catalogs)
+- Added `ContractDefinitionClient` (create, get, update, delete, request, change state)
+- Added `ContractNegotiationClient` (create, get, get state, get agreement, terminate, hide, delete)
+- Added `PolicyClient` (create, get, update, delete, request, evaluate, validate)
+- Added full examples module covering all clients and services
+- Added paginated result support
 
-Fixed
+#### Fixed
 
-- None
+- `changeState` sending quoted string — replaced raw body with `@Body` template to bypass
+  `JacksonEncoder`
+- `SuspendTransfer` missing `@context` and `@type` fields
+- `TerminateTransfer` missing body — created `TerminateTransferDTO`, updated client and example
+- `TerminateNegotiation` missing body — wired `TerminationNegotiationDTO` into client and example
 
-Improved
+## [1.0.0](https://github.com/datosindaga/java-indaga-connector-sdk/releases/tag/v1.0.0) (17/04/2026)
 
-- None
-
-New
+#### New
 
 - Added Authentication
 - Added Client for transfers
