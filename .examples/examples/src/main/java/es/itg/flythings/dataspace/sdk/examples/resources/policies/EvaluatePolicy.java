@@ -3,6 +3,7 @@ package es.itg.flythings.dataspace.sdk.examples.resources.policies;
 import es.itg.flythings.dataspace.sdk.config.DataspaceClient;
 import es.itg.flythings.dataspace.sdk.resources.policies.client.PolicyClient;
 import es.itg.flythings.dataspace.sdk.resources.policies.dto.PolicyEvaluationPlanRequestDTO;
+import java.util.List;
 import java.util.logging.Logger;
 
 /**
