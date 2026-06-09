@@ -619,7 +619,12 @@ Returns `IdResponseDTO` containing the created negotiation's `id`.
 #### Terminate
 
 ```java
-negotiations.terminate("my-negotiation-id");
+var termination = new TerminationNegotiationDTO();
+termination.setContext(List.of("https://w3id.org/edc/connector/management/v0.0.1"));
+termination.setType("TerminateNegotiation");
+termination.setReason("Negotiation terminated by consumer request.");
+
+negotiations.terminate("my-negotiation-id", termination);
 ```
 
 Returns `void`.

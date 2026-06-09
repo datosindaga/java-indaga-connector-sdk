@@ -3,6 +3,7 @@ package es.itg.flythings.dataspace.sdk.examples.resources.transfers;
 import es.itg.flythings.dataspace.sdk.config.DataspaceClient;
 import es.itg.flythings.dataspace.sdk.resources.transfers.client.TransferClient;
 import es.itg.flythings.dataspace.sdk.resources.transfers.dto.SuspendTransferDTO;
+import java.util.List;
 import java.util.logging.Logger;
 
 /**

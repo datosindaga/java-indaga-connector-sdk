@@ -6,6 +6,7 @@ import es.itg.flythings.dataspace.sdk.resources.contractagreements.dto.ContractA
 import es.itg.flythings.dataspace.sdk.resources.contractnegotiation.dto.ContractNegotiationDTO;
 import es.itg.flythings.dataspace.sdk.resources.contractnegotiation.dto.ContractRequestDTO;
 import es.itg.flythings.dataspace.sdk.resources.contractnegotiation.dto.NegotiationStateDTO;
+import es.itg.flythings.dataspace.sdk.resources.contractnegotiation.dto.TerminationNegotiationDTO;
 import feign.Headers;
 import feign.Param;
 import feign.RequestLine;
@@ -66,10 +67,12 @@ public interface ContractNegotiationClient {
     /**
      * Terminate contract negotiation.
      *
-     * @param id the contract id
+     * @param id          the contract id
+     * @param termination the termination body
      */
     @RequestLine("POST /v1/contractnegotiations/{id}/terminate")
-    void terminate(@Param("id") String id);
+    @Headers("Content-Type: application/json")
+    void terminate(@Param("id") String id, TerminationNegotiationDTO termination);
 
     /**
      * Hide contract negotiation.

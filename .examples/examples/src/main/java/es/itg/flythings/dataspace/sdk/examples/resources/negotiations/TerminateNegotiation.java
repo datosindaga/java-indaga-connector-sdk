@@ -2,6 +2,8 @@ package es.itg.flythings.dataspace.sdk.examples.resources.negotiations;
 
 import es.itg.flythings.dataspace.sdk.config.DataspaceClient;
 import es.itg.flythings.dataspace.sdk.resources.contractnegotiation.client.ContractNegotiationClient;
+import es.itg.flythings.dataspace.sdk.resources.contractnegotiation.dto.TerminationNegotiationDTO;
+import java.util.List;
 import java.util.logging.Logger;
 
 /**
@@ -25,7 +27,12 @@ public class TerminateNegotiation {
 
         var negotiations = client.buildClient(ContractNegotiationClient.class);
 
-        negotiations.terminate("negotiation-id-1");
+        var termination = new TerminationNegotiationDTO();
+        termination.setContext(List.of("https://w3id.org/edc/connector/management/v0.0.1"));
+        termination.setType("TerminateNegotiation");
+        termination.setReason("Negotiation terminated by consumer request.");
+
+        negotiations.terminate("negotiation-id-1", termination);
 
         log.info("Terminated negotiation: negotiation-id-1");
     }
