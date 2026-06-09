@@ -117,6 +117,7 @@ var assets = client.buildClient(AssetClient.class);
 
 var query = new QuerySpecDTO();
 query.setType("QuerySpec");
+query.setContext(List.of("https://w3id.org/edc/connector/management/v0.0.1"));
 
 var results = assets.request(query);
 ```
@@ -132,6 +133,7 @@ criterion.setOperandRight("my-asset-id");
 
 var query = new QuerySpecDTO();
 query.setType("QuerySpec");
+query.setContext(List.of("https://w3id.org/edc/connector/management/v0.0.1"));
 query.setFilterExpression(List.of(criterion));
 
 var results = assets.request(query);
@@ -191,11 +193,14 @@ Returns an `AssetOutputDTO`.
 #### Create
 
 ```java
-var dataAddress = new DataAddressDTO();
-dataAddress.setAddressType("HttpData");
+var dataAddress = new HttpDataAddressDTO();
+dataAddress.setJsonLdType("DataAddress");
+dataAddress.setType("HttpData");
 dataAddress.setBaseUrl("https://jsonplaceholder.typicode.com/todos");
 
 var asset = new AssetInputDTO();
+asset.setContext(List.of("https://w3id.org/edc/connector/management/v0.0.1"));
+asset.setType("Asset");
 asset.setProperties(Map.of(
     "title", "Test TODO",
     "description", "Simple ToDo JSON sample",
@@ -272,6 +277,7 @@ var policies = client.buildClient(PolicyClient.class);
 
 var query = new QuerySpecDTO();
 query.setType("QuerySpec");
+query.setContext(List.of("https://w3id.org/edc/connector/management/v0.0.1"));
 
 var results = policies.request(query);
 ```
@@ -290,7 +296,8 @@ Returns a `PolicyDefinitionOutputDTO`.
 
 ```java
 var policy = new PolicyDefinitionInputDTO();
-policy.setId("my-policy-id");
+policy.setContext(List.of("https://w3id.org/edc/connector/management/v0.0.1"));
+policy.setType("PolicyDefinition");
 policy.setPolicy(Map.of(
     "@type", "Set",
     "permission", List.of(Map.of(
@@ -357,6 +364,8 @@ Generate an evaluation plan describing the steps the connector would execute whe
 
 ```java
 var request = new PolicyEvaluationPlanRequestDTO();
+request.setContext(List.of("https://w3id.org/edc/connector/management/v0.0.1"));
+request.setType("PolicyEvaluationPlanRequest");
 request.setPolicyScope("catalog");
 
 var plan = policies.evaluate("my-policy-id", request);
@@ -402,6 +411,7 @@ var contracts = client.buildClient(ContractDefinitionClient.class);
 
 var query = new QuerySpecDTO();
 query.setType("QuerySpec");
+query.setContext(List.of("https://w3id.org/edc/connector/management/v0.0.1"));
 
 var results = contracts.request(query);
 ```
@@ -436,6 +446,8 @@ selector.setOperator("=");
 selector.setOperandRight("my-asset-id");
 
 var contract = new ContractDefinitionInputDTO();
+contract.setContext(List.of("https://w3id.org/edc/connector/management/v0.0.1"));
+contract.setType("ContractDefinition");
 contract.setId("my-contract-id");
 contract.setAccessPolicyId("my-access-policy-id");
 contract.setContractPolicyId("my-contract-policy-id");
@@ -511,6 +523,7 @@ var negotiations = client.buildClient(ContractNegotiationClient.class);
 
 var query = new QuerySpecDTO();
 query.setType("QuerySpec");
+query.setContext(List.of("https://w3id.org/edc/connector/management/v0.0.1"));
 
 var results = negotiations.request(query);
 ```
@@ -564,11 +577,15 @@ Initiate a new contract negotiation with a provider:
 
 ```java
 var offer = new OfferDTO();
+offer.setType("Offer");
 offer.setId("offer-id:contract-def-1:provider-connector-id");
 offer.setAssigner("provider-participant-id");
 offer.setTarget("my-asset-id");
+offer.setPermission(List.of(Map.of("action", "use")));
 
 var request = new ContractRequestDTO();
+request.setContext(List.of("https://w3id.org/edc/connector/management/v0.0.1"));
+request.setType("ContractRequest");
 request.setCounterPartyAddress("https://provider.connector/protocol");
 request.setProtocol("dataspace-protocol-http");
 request.setPolicy(offer);
@@ -639,6 +656,7 @@ var agreements = client.buildClient(ContractAgreementClient.class);
 
 var query = new QuerySpecDTO();
 query.setType("QuerySpec");
+query.setContext(List.of("https://w3id.org/edc/connector/management/v0.0.1"));
 
 var results = agreements.request(query);
 ```
@@ -691,6 +709,8 @@ Fetch the full catalog from a remote provider:
 var catalog = client.buildClient(CatalogClient.class);
 
 var request = new CatalogRequestDTO();
+request.setContext(List.of("https://w3id.org/edc/connector/management/v0.0.1"));
+request.setType("CatalogRequest");
 request.setProtocol("dataspace-protocol-http");
 request.setCounterPartyAddress("https://provider.connector/protocol");
 request.setCounterPartyId("provider-participant-id");
@@ -716,6 +736,8 @@ Fetch a single dataset from a provider catalog by asset ID:
 
 ```java
 var request = new DatasetRequestDTO();
+request.setContext(List.of("https://w3id.org/edc/connector/management/v0.0.1"));
+request.setType("DatasetRequest");
 request.setId("my-asset-id");
 request.setProtocol("dataspace-protocol-http");
 request.setCounterPartyAddress("https://provider.connector/protocol");
@@ -770,6 +792,7 @@ var transfers = client.buildClient(TransferClient.class);
 
 var query = new QuerySpecDTO();
 query.setType("QuerySpec");
+query.setContext(List.of("https://w3id.org/edc/connector/management/v0.0.1"));
 
 var results = transfers.request(query);
 ```
@@ -801,10 +824,12 @@ Returns `TransferProcessDTO`.
 Initiate a new transfer process against a contract agreement:
 
 ```java
-var destination = new DataAddressDTO();
-destination.setAddressType("HttpProxy");
+var destination = new GenericDataAddressDTO();
+destination.setType("HttpProxy");
 
 var transfer = new TransferRequestDTO();
+transfer.setContext(List.of("https://w3id.org/edc/connector/management/v0.0.1"));
+transfer.setType("TransferRequest");
 transfer.setCounterPartyAddress("https://provider.connector/protocol");
 transfer.setProtocol("dataspace-protocol-http");
 transfer.setContractId("my-agreement-id");
@@ -886,6 +911,7 @@ var edrs = client.buildClient(EDRCacheClient.class);
 
 var query = new QuerySpecDTO();
 query.setType("QuerySpec");
+query.setContext(List.of("https://w3id.org/edc/connector/management/v0.0.1"));
 
 var results = edrs.request(query);
 ```

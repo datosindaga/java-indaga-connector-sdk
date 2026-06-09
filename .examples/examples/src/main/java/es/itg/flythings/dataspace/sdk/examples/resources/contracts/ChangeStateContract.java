@@ -26,7 +26,7 @@ public class ChangeStateContract {
 
         var contracts = client.buildClient(ContractDefinitionClient.class);
 
-        contracts.changeState("contract-def-1", ContractState.PUBLISHED);
+        contracts.changeState("contract-def-1", ContractState.UNDER_REVIEW.name());
 
         log.info("Changed state of contract definition contract-def-1 to PUBLISHED");
     }

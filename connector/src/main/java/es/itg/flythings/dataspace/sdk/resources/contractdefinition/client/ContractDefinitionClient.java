@@ -4,8 +4,8 @@ import es.itg.flythings.dataspace.sdk.edc.dto.IdResponseDTO;
 import es.itg.flythings.dataspace.sdk.edc.dto.QuerySpecDTO;
 import es.itg.flythings.dataspace.sdk.resources.contractdefinition.dto.ContractDefinitionInputDTO;
 import es.itg.flythings.dataspace.sdk.resources.contractdefinition.dto.ContractDefinitionOutputDTO;
-import es.itg.flythings.dataspace.sdk.resources.contractdefinition.enums.ContractState;
 import es.itg.flythings.dataspace.sdk.dto.PaginatedResultDTO;
+import feign.Body;
 import feign.Headers;
 import feign.Param;
 import feign.RequestLine;
@@ -61,7 +61,8 @@ public interface ContractDefinitionClient {
      */
     @RequestLine("PUT /v1/contractdefinitions/state/{id}")
     @Headers("Content-Type: text/plain")
-    void changeState(@Param("id") String id, ContractState targetState);
+    @Body("{targetState}")
+    void changeState(@Param("id") String id, @Param("targetState") String targetState);
 
     /**
      * Delete contract definition.
