@@ -9,10 +9,16 @@ import es.itg.flythings.utils.TestConfig;
 import feign.Logger.Level;
 import org.junit.jupiter.api.Test;
 
+/**
+ * The Contract agreements client test.
+ */
 class ContractAgreementsClientTest {
 
     private final ContractAgreementClient agreementClient;
 
+    /**
+     * Instantiates a new Contract agreements client test.
+     */
     public ContractAgreementsClientTest() {
         var config = DataspaceClient.builder()
             .apiUrl(TestConfig.get("sdk.api.url"))
@@ -26,6 +32,9 @@ class ContractAgreementsClientTest {
         this.agreementClient = config.buildClient(ContractAgreementClient.class);
     }
 
+    /**
+     * Gets requests should return agreements when query is valid.
+     */
     @Test
     void getRequests_shouldReturnAgreements_whenQueryIsValid() {
         var query = new QuerySpecDTO();
@@ -35,6 +44,9 @@ class ContractAgreementsClientTest {
         assertNotNull(result);
     }
 
+    /**
+     * Gets negotiation should return negotiation when query is valid.
+     */
     @Test
     void getNegotiation_shouldReturnNegotiation_whenQueryIsValid() {
         var agreementId = TestConfig.get("test.agreement.id");
@@ -43,6 +55,9 @@ class ContractAgreementsClientTest {
         assertNotNull(res);
     }
 
+    /**
+     * Gets agreement should return agreement when query is valid.
+     */
     @Test
     void getAgreement_shouldReturnAgreement_whenQueryIsValid() {
         var agreementId = TestConfig.get("test.agreement.id");

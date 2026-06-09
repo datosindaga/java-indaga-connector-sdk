@@ -9,11 +9,17 @@ import es.itg.flythings.utils.TestConfig;
 import feign.Logger.Level;
 import org.junit.jupiter.api.Test;
 
+/**
+ * The Download service test.
+ */
 class DownloadServiceTest {
 
     private final DataspaceClient config;
     private final DownloadService service;
 
+    /**
+     * Instantiates a new Download service test.
+     */
     public DownloadServiceTest() {
         this.config = DataspaceClient.builder()
             .apiUrl(TestConfig.get("sdk.api.url"))
@@ -27,6 +33,12 @@ class DownloadServiceTest {
         this.service = config.buildService(DownloadService.class);
     }
 
+    /**
+     * Gets downloads should return download result when query is valid.
+     *
+     * @throws SdkBadRequestException the sdk bad request exception
+     * @throws SdkServerException     the sdk server exception
+     */
     @Test
     void getDownloads_shouldReturnDownloadResult_whenQueryIsValid()
         throws SdkBadRequestException, SdkServerException {

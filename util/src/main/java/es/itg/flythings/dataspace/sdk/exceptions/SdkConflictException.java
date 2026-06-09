@@ -8,10 +8,20 @@ import feign.Response;
  */
 public class SdkConflictException extends SdkException {
 
+    /**
+     * Instantiates a new Sdk conflict exception.
+     *
+     * @param res the res
+     */
     public SdkConflictException(Response res) {
         super(res);
     }
 
+    /**
+     * Instantiates a new Sdk conflict exception.
+     *
+     * @param message the message
+     */
     public SdkConflictException(String message) {
         super(message);
     }

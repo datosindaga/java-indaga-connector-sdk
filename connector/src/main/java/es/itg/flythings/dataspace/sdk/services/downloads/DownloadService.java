@@ -2,7 +2,7 @@ package es.itg.flythings.dataspace.sdk.services.downloads;
 
 import es.itg.flythings.dataspace.sdk.config.DataspaceClient;
 import es.itg.flythings.dataspace.sdk.config.SdkService;
-import es.itg.flythings.dataspace.sdk.edc.dto.DataAddressDTO;
+import es.itg.flythings.dataspace.sdk.edc.dto.GenericDataAddressDTO;
 import es.itg.flythings.dataspace.sdk.exceptions.SdkBadRequestException;
 import es.itg.flythings.dataspace.sdk.exceptions.SdkServerException;
 import es.itg.flythings.dataspace.sdk.resources.contractagreements.clients.ContractAgreementClient;
@@ -25,7 +25,7 @@ import java.util.logging.Logger;
  * DownloadResult result = service.download(
  *         new DownloadRequest.Builder("my-agreement-id").build()
  * );
- * }*</pre>
+ * }</pre>
  *
  * <h2>With custom transfer configuration</h2>
  * <pre>{@code
@@ -35,7 +35,7 @@ import java.util.logging.Logger;
  *                 .dataAddressType("AmazonS3")
  *                 .build()
  * );
- * }*</pre>
+ * }</pre>
  *
  * <h2>Usage with manual clients (testing)</h2>
  * <pre>{@code
@@ -44,7 +44,7 @@ import java.util.logging.Logger;
  *         transferClient,
  *         edrCacheClient
  * );
- * }*</pre>
+ * }</pre>
  */
 public final class DownloadService implements SdkService {
 
@@ -155,8 +155,8 @@ public final class DownloadService implements SdkService {
 
     private TransferRequestDTO buildTransferRequest(ContractNegotiationDTO negotiation,
         DownloadRequest request) {
-        var address = new DataAddressDTO();
-        address.setAddressType(request.dataAddressType);
+        var address = new GenericDataAddressDTO();
+        address.setType(request.dataAddressType);
 
         var transfer = new TransferRequestDTO();
         transfer.setContext(request.context);

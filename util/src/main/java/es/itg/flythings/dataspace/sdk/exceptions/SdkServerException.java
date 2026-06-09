@@ -7,10 +7,20 @@ import feign.Response;
  */
 public class SdkServerException extends SdkException {
 
+    /**
+     * Instantiates a new Sdk server exception.
+     *
+     * @param res the res
+     */
     public SdkServerException(Response res) {
         super(res);
     }
 
+    /**
+     * Instantiates a new Sdk server exception.
+     *
+     * @param message the message
+     */
     public SdkServerException(String message) {
         super(message);
     }
