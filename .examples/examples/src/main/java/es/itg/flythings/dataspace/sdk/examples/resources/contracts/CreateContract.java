@@ -5,6 +5,7 @@ import es.itg.flythings.dataspace.sdk.edc.dto.CriterionDTO;
 import es.itg.flythings.dataspace.sdk.resources.contractdefinition.client.ContractDefinitionClient;
 import es.itg.flythings.dataspace.sdk.resources.contractdefinition.dto.ContractDefinitionInputDTO;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Logger;
 
 /**
@@ -30,7 +31,7 @@ public class CreateContract {
 
         var selector = new CriterionDTO();
         selector.setType("Criterion");
-        selector.setOperandLeft("id");
+        selector.setOperandLeft("https://w3id.org/edc/v0.0.1/ns/id");
         selector.setOperator("=");
         selector.setOperandRight("asset-todo-api-1");
 
@@ -41,6 +42,9 @@ public class CreateContract {
         contract.setAccessPolicyId("policy-open-1");
         contract.setContractPolicyId("policy-open-1");
         contract.setAssetsSelector(List.of(selector));
+        contract.setPrivateProperties(Map.of(
+            "title", "Example", "description", "Example Contract"
+        ));
 
         var result = contracts.create(contract);
 
