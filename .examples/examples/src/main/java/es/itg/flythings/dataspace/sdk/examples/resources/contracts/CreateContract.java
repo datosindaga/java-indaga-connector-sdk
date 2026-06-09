@@ -38,7 +38,6 @@ public class CreateContract {
         var contract = new ContractDefinitionInputDTO();
         contract.setContext(List.of("https://w3id.org/edc/connector/management/v0.0.1"));
         contract.setType("ContractDefinition");
-        contract.setId("contract-def-1");
         contract.setAccessPolicyId("policy-open-1");
         contract.setContractPolicyId("policy-open-1");
         contract.setAssetsSelector(List.of(selector));
